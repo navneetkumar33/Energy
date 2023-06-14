@@ -1,5 +1,6 @@
 export interface fastivalInteface{
 fastivals: Fastivals[] | null | undefined;
+name:string,
 bands: Band[];
 }
 

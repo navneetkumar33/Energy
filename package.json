@@ -49,5 +49,8 @@
       "axios": "axios/dist/node/axios.cjs"
     }
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "msw": "^1.2.2"
+  }
 }
