@@ -23,7 +23,6 @@ function Fastivals() {
     if (error) {
         return <h4>{error}</h4>
     }
-
     return (<>
         <h4>Energy Australia</h4>
         {
