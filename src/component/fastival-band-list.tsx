@@ -2,11 +2,11 @@ import React from 'react'
 import { fastivalBandProps } from './types'
 
 
-function FastivalBandList({ band }: fastivalBandProps) {
+function FastivalBandList({ bandName, fastival }: fastivalBandProps) {
     return (
         <>
-            <dt> {band.name}</dt>
-            <dd>{band.recordLabel}</dd>
+            <dt>{bandName}</dt>
+            <dd>{fastival}</dd>
         </>
     )
 }

@@ -6,7 +6,11 @@
 h4{
   margin-left: 12vw;
   margin-top:2vh;
-}
+  }
+  h4>span{
+    width:fit-content;
+    background-color:rgb(235, 233, 233);
+  }
 dl{
   margin-left: 15vw;
 }

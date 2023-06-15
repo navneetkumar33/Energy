@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import FastivalBandList from './fastival-band-list'
-import { fastivalInteface } from './types';
+import { fastivaltype } from './types';
 import { AppRoute } from './app-route';
 import http from './instance';
-import { sortedData } from '../util/helper';
+import { sortedData, groupby , fastivalFinalData} from '../util/helper';
+import { fastivalsData } from './fastival-data';
 
 function Fastivals() {
-    const [fastivals, setFastivals] = useState<fastivalInteface[] | null | undefined>()
+    const [fastivals, setFastivals] = useState<fastivaltype[]| null | undefined>()
     const [error, setError] = useState<string>('')
     const url: string = AppRoute.festivals_url;
     useEffect(() => {
-        let data;
-        http(url, "GET")?.then(res => {
-            const sortFastivalData=sortedData(res.data);
-           return setFastivals(sortFastivalData)
-        }).catch(error => {
+            http(url, "GET")?.then(res => {
+                const data=sortedData(fastivalsData);
+                const groupData=groupby('recordLabel', data)
+                const fastivalFinaldata=fastivalFinalData(groupData)
+            return setFastivals(fastivalFinaldata)
+               }).catch(error => {
             setFastivals(null)
             setError("Something Went wrong")
         });
      }, [url])
-
+   console.log(fastivals)
     if (error) {
         return <h4>{error}</h4>
     }
@@ -28,12 +30,12 @@ function Fastivals() {
         {
             fastivals && (fastivals?.map((fastival, index) => {
                 return (<React.Fragment key={index}>
-                    <h4>{fastival.name ? fastival.name : "Report label"}</h4>
+                    <h4><span>{fastival.name?fastival.name: ""}</span></h4>
                     <dl>
-                        {fastival?.bands?.map((band, index) => {
+                        {fastival?.bands?.map((band:any, index: number) => {
                             return (
                                 <React.Fragment key={index}>
-                                    <FastivalBandList band={band} />
+                                    <FastivalBandList bandName={band.name} fastival={band.fastival} />
                                 </React.Fragment>
                             )
                         })}

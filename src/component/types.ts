@@ -13,10 +13,13 @@ export interface Fastivals{
     bands: Band[]    
 }
 
+export interface fastivaltype{
+    name: string,
+    bands: Band[] 
+}
 export type fastivalBandProps = {
-    band: {
-        name: string,
-        recordLabel: string,
-    }
+    bandName: string,
+    fastival: string
+
 
 }
