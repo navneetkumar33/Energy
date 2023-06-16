@@ -8,8 +8,6 @@ export const handlers = [
             { name: 'Jill Black', recordLabel: 'Fourth Woman Records' },
             { name: 'Werewolf Weekday', recordLabel: 'XS Recordings' },
             ]
-        }
-
-        ]))
+        }        ]))
     })
 ]
